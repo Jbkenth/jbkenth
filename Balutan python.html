@@ -1,0 +1,641 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+<style>
+body{
+  background: lightgreen;
+}
+nav{
+  background: #fff;
+  padding: 10px;
+  margin-top:-8px;
+  margin-left:-8px;
+  margin-right: -8px;
+  border-bottom: 3px solid green;
+  margin-bottom: 20px;
+}
+.m1 {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.mc1 {
+  border-radius: 10px;
+  background-color: #000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #00;
+  width: 80%; 
+}
+.m2 {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.7);
+}
+
+.mc2 {
+  border-radius: 10px;
+  background-color: #000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #00;
+  width: 80%; 
+}
+.m3 {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.mc3 {
+  border-radius: 10px;
+  background-color: #000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #00;
+  width: 80%; 
+}
+.m4 {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.mc4 {
+  border-radius: 10px;
+  background-color: #000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #00;
+  width: 80%; 
+}
+.m5 {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.mc5 {
+  border-radius: 10px;
+  background-color: #000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #00;
+  width: 80%; 
+}
+.m6 {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.mc6 {
+  border-radius: 10px;
+  background-color: #000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #00;
+  width: 80%; 
+}
+.m7 {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.mc7 {
+  border-radius: 10px;
+  background-color: #000;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #00;
+  width: 80%; 
+}
+
+.m8 {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.7);
+}
+
+.mc8 {
+  border-radius: 10px;
+  background-color: #000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #00;
+  width: 80%; 
+}
+.close1 {
+  color: red;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+.close2 {
+  color: red;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+.close3 {
+  color: red;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+.close4 {
+  color: red;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+.close5 {
+  color: red;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+.close6 {
+  color: red;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+.close7 {
+  color: red;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.close8 {
+  color: red;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+.s1{
+  margin-top: -56px;
+  float: right;
+}
+.p{
+  font-size: 15px;
+  color: #fff;
+}
+.code{
+  color: red;
+}
+.print{
+  margin-left: 15px;
+}
+.hr{
+  border: 1px solid blue;
+}
+.green{
+  color: green;
+}
+h3{
+  color: #fff;
+}
+.violet{
+  color: darkviolet;
+}
+.yellow{
+  color: yellow;
+}
+.orange{
+  color: orange;
+}
+.up{
+  font-size: 13px;
+}
+.b1{
+  text-align: center;
+}
+.b2{
+  text-align: center;
+}
+.b3{
+  text-align: center;
+}
+.b4{
+  text-align: center;
+}
+.b5{
+  text-align: center;
+}
+.b6{
+  text-align: center;
+}
+.b7{
+  text-align: center;
+}
+.b8{
+  text-align: center;
+}
+.b1 button{
+  padding: 15px;
+  color: white;
+  background: green;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.b2 button{
+  padding: 15px;
+  color: white;
+  background: green;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.b3 button{
+  padding: 15px;
+  color: white;
+  background: green;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.b4 button{
+  padding: 15px;
+  color: white;
+  background: green;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.b5 button{
+  padding: 15px;
+  color: white;
+  background: green;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.b6 button{
+  padding: 15px;
+  color: white;
+  background: green;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.b7 button{
+  padding: 15px;
+  color: white;
+  background: green;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.b8 button{
+  padding: 15px;
+  color: white;
+  background: green;
+  border: 2px solid green;
+  border-radius: 5px;
+}
+.output{
+  border-radius: 5px;
+  border: 1px solid #fff;
+  padding:8px;
+}
+</style>
+<body>
+  <nav>
+  <div class="up">
+<p><b>NAME: </b>John Kenneth Balutan</p>
+    <p><b>COURSE & SET: </b>BSIS - 3A</p>
+    <p class="s1"><b>DATE:</b> October 20, 2023</p>
+  </div>
+  </nav>
+  <div class="b1">
+<button id="myBtn1">BalutanActivity1.py</button>
+  </div>
+  <br>
+  <div class="b2">
+<button id="myBtn2">BalutanActivity2.py</button>
+  </div>
+  <br>
+  <div class="b3">
+<button id="myBtn3">BalutanActivity3.py</button>
+  </div>
+  <br>
+  <div class="b4">
+<button id="myBtn4">BalutanActivity4.py</button>
+  </div>
+  <br>
+  <div class="b5">
+<button id="myBtn5">BalutanActivity5.py</button>
+  </div>
+  <br>
+  <div class="b6">
+<button id="myBtn6">BalutanActivity6.py</button>
+  </div>
+  <br>
+  <div class="b7">
+<button id="myBtn7">BalutanActivity7.py</button>
+  </div>
+  <br>
+  <div class="b8">
+<button id="myBtn8">BalutanActivity8.py</button>
+  </div>
+
+    <div class="m1" id="mm1">
+    <div class="mc1"></div>
+    <span class="close1">&times;</span>
+  </div>
+  
+    <div class="m2" id="mm2">
+    <div class="mc2">
+    <span class="close2">&times;</span>
+      <div class="p">
+      <p>Dollar = <label class="violet">float</label>(<label class="violet">input</label>(<label class="green">"Enter Dollar $: "</label>))</p>
+      <p>Php = <label class="yellow">56.77</label></p>
+      <p>convert = Dollar <label class="yellow">*</label> Php</p>
+      <p>print("$", Dollar, "=", "Php", convert)</p>
+        <hr>
+        <button class="output" id="o2"onclick="jk2()">Output</button>
+      </div>
+      </div>
+  </div>
+  
+    <div class="m3" id="mm3">
+    <div class="mc3"></div>
+    <span class="close3">&times;</span>
+  </div>
+  
+    <div class="m4" id="mm4">
+    <div class="mc4"></div>
+    <span class="close4">&times;</span>
+  </div>
+  
+    <div class="m5" id="mm5">
+    <div class="mc5"></div>
+    <span class="close5">&times;</span>
+  </div>
+  
+    <div class="m6" id="mm6">
+    <div class="mc6"></div>
+    <span class="close6">&times;</span>
+  </div>
+  
+    <div class="m7" id="mm7">
+    <div class="mc7"></div>
+    <span class="close7">&times;</span>
+  </div>
+  
+<div id="mm8" class="m8">
+  <div class="mc8">
+    <span class="close8">&times;</span>
+    <h3>Create a python program that ask letter from the user and display color.</h3>
+    <hr>
+    <div class="p">
+      <br>
+      <p class="code">Code:</p>
+      <p>color = <label class="violet">str</label>(<label class="violet">input</label>(<label class="green">"Give me letter: "</label>))</p>
+      <p><label class="violet">if</label> color == <label class="green">'B'</label> <label class="orange">or</label> color == <label class="green">'b'</label>:</p>
+      <p class="print">print(<label class="green">"Blue"</label>)</p>
+      <p><label class="violet">elif</label> color == <label class="green">'R'</label> <label class="orange">or</label> color == <label class="green">'r'</label>:</p>
+      <p class="print">print(<label class="green">"Red"</label>)</p>
+      <p><label class="violet">elif</label> color == <label class="green">'Y'</label> <label class="orange">or</label> color == <label class="green">'y'</label>:</p>
+      <p class="print">print(<label class="green">"Yellow"</label>)</p>
+      <p><label class="violet">elif</label> color == <label class="green">'G'</label> <label class="orange">or</label> color == <label class="green">'g'</label>:</p>
+      <p class="print">print(<label class="green">"Green"</label>)</p>
+      <p><label class="violet">else</label>:</p>
+      <p class="print">print(<label class="green">"Unknown Color!!"</label>)</p>
+      <hr>
+      <button class="output" onclick="jk()" id="o">Output</button>
+    </div>
+  </div>
+</div>
+<script>
+  var m1 = document.getElementById("mm1");
+  var m2 = document.getElementById("mm2");
+  var m3 = document.getElementById("mm3");
+  var m4 = document.getElementById("mm4");
+  var m5 = document.getElementById("mm5");
+  var m6 = document.getElementById("mm6");
+var m7 = document.getElementById("mm7");
+  var m8 = document.getElementById("mm8");
+  
+  var btn1 = document.getElementById("myBtn1");
+  var btn2 = document.getElementById("myBtn2");
+  var btn3 = document.getElementById("myBtn3");
+  var btn4 = document.getElementById("myBtn4");
+ var btn5 = document.getElementById("myBtn5");
+  var btn6 = document.getElementById("myBtn6");
+  var btn7 = document.getElementById("myBtn7");
+var btn8 = document.getElementById("myBtn8");
+
+var span1 = document.getElementsByClassName("close1")[0];
+  var span2 = document.getElementsByClassName("close2")[0];
+  var span3 = document.getElementsByClassName("close3")[0];
+  var span4 = document.getElementsByClassName("close4")[0];
+  var span5 = document.getElementsByClassName("close5")[0];
+  var span6 = document.getElementsByClassName("close6")[0];
+  var span7 = document.getElementsByClassName("close7")[0];
+  var span8 = document.getElementsByClassName("close8")[0];
+
+  btn1.onclick = function() {
+  m1.style.display = "block";
+}
+  btn2.onclick = function() {
+  m2.style.display = "block";
+}
+  btn3.onclick = function() {
+  m3.style.display = "block";
+}
+  btn4.onclick = function() {
+  m4.style.display = "block";
+}
+  btn5.onclick = function() {
+  m5.style.display = "block";
+}
+  btn6.onclick = function() {
+  m6.style.display = "block";
+}
+  btn7.onclick = function() {
+  m7.style.display = "block";
+}
+btn8.onclick = function() {
+  m8.style.display = "block";
+}
+
+  span1.onclick = function() {
+  m1.style.display = "none";
+}
+  span2.onclick = function() {
+  m2.style.display = "none";
+}
+  span3.onclick = function() {
+  m3.style.display = "none";
+}
+ span4.onclick = function() {
+  m4.style.display = "none";
+}
+  span5.onclick = function() {
+  m5.style.display = "none";
+}
+  span6.onclick = function() {
+  m6.style.display = "none";
+}
+  span7.onclick = function() {
+  m7.style.display = "none";
+}
+span8.onclick = function() {
+  m8.style.display = "none";
+}
+
+  window.onclick = function(event) {
+  if (event.target == m1) {
+    m1.style.display = "none";
+  }
+}
+  window.onclick = function(event) {
+  if (event.target == m2) {
+    m2.style.display = "none";
+  }
+}
+  window.onclick = function(event) {
+  if (event.target == m3) {
+    m3.style.display = "none";
+  }
+}
+  window.onclick = function(event) {
+  if (event.target == m4) {
+    m4.style.display = "none";
+  }
+}
+  window.onclick = function(event) {
+  if (event.target == m5) {
+    m5.style.display = "none";
+  }
+}
+  window.onclick = function(event) {
+  if (event.target == m6) {
+    m6.style.display = "none";
+  }
+}
+  window.onclick = function(event) {
+  if (event.target == m7) {
+    m7.style.display = "none";
+  }
+}
+window.onclick = function(event) {
+  if (event.target == m8) {
+    m8.style.display = "none";
+  }
+}
+</script>
+<script>
+function jk(){
+let a = document.getElementById('o');
+if (!a.clicked == true){
+  ken = prompt('Give me letter:');
+  if (ken == 'R'){
+    window.alert('Red');
+  }
+  else if(ken == 'r'){
+    window.alert('Red');
+  }
+  else if(ken == 'B'){
+    window.alert('Blue');
+  }
+  else if(ken == 'b'){
+    window.alert('Blue');
+  }
+  else if(ken == 'Y'){
+    window.alert('Yellow');
+  }
+  else if(ken == 'y'){
+    window.alert('Yellow');
+  }
+  else if(ken == 'G'){
+    window.alert('Green');
+  }
+  else if(ken == 'g'){
+    window.alert('Green');
+  }
+  else if(ken == ''){
+    event.preventDefault();
+  }
+  else if (ken.clicked == false){
+    event.preventDefault();
+  }
+  else{
+    window.alert('Unknown Color!!');
+  }
+}}
+function jk2(){
+  let q = document.getElementById('o2');
+  if(!q.clicked == true){
+    a = prompt('Enter Dollar $:');
+    php = 56;
+    convert = a * php;
+    if (a == ''){
+      event.preventDefault();
+    }
+    else if(a.clicked == false){
+      event.preventDefault();
+    }else{
+      window.alert('$' + a + ' ' + '=' + ' ' + 'Php' + convert);
+    }
+  }
+}
+</script>
+</body>
+</html>
