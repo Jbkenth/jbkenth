@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+*{
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: 'Poppins', sans-serif;
+
+}
+html,body{
+
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background: tan;
+
+}
+h1{
+  color: black;
+}
+h5{
+  color: red;
+}
+div{
+  height: 1030px;
+}
+input[type="text"]{
+  height:80px;
+  width:50px;
+   font-size: 2px;
+}
+select[name="Flavor"]{
+  width:180px;
+  height:25px;
+  text-align: center;
+  font-size: 15px;
+  border-right: none;
+  
+  background: -webkit-linear-gradient(right, gray, white);
+}
+select[name="Design"]{
+   width: 180px;
+  height: 25px;
+  text-align: center;
+ font-size: 15px;  
+   background: -webkit-linear-gradient(right, gray, white);
+}
+select[name="Cake"]{
+  width: 190px;
+  height: 25px;
+  text-align: center;
+ font-size: 15px;  
+   background: -webkit-linear-gradient(right, gray, white);
+}
+p{
+  font-size: 18px;
+}
+input[type="file"]{
+}
+ input[type="submit"]{
+
+  height: 50px;
+
+  width: 300px;
+
+  z-index: 4;
+
+  position: relative;
+   
+  text-align: center;
+
+  background: none;
+
+  border: none;
+
+  color: #fff;
+
+  padding-left: 4;
+
+  border-radius: 5px;
+
+  font-size: 25px;
+
+  font-weight: 100;
+
+  cursor: pointer;
+   
+  background: -webkit-linear-gradient(right, red, #a445b2, red);
+}
+.scroll::-webkit-scrollbar {
+   display: none;
+ }
+select[name="month"]{
+  width: 110px;
+  height: 30px;
+  text-align: center;
+ font-size: 15px; 
+   background: -webkit-linear-gradient(right, gray, white);
+}
+select[name="day"]{
+  width: 110px;
+  height: 30px;
+  text-align: center;
+ font-size: 15px;  
+   background: -webkit-linear-gradient(right, gray, white);
+}
+select[name="year"]{
+  width: 110px;
+  height: 30px;
+  text-align: center;
+ font-size: 15px;
+   background: -webkit-linear-gradient(right, gray, white);
+}
+select[name="Hour"]{
+  width: 260px;
+  height: 25px;
+  text-align: center;
+ font-size: 15px;  
+   background: -webkit-linear-gradient(right, gray, white);
+}
+textarea{
+  text-align: center;
+ font-size: 15px;  
+  width: 300px;
+   background: -webkit-linear-gradient(right, white,  white);
+}
+input[type="tel"]{
+  width: 200px;
+  height: 25px;
+  text-align: center;
+ font-size: 20px; 
+   background: -webkit-linear-gradient(right, gray, white);
+}
+</style>
+<body>
+<div style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa2jdyXGxCEleHs1IGMnHqOIOQPB646a4o8g&usqp=CAU.jpg');">
+  <br>
+  <h1><center>ORDER CAKE</center></h1>
+  <h5><center><i><u>we accept order from 7:00 a.m untill 4:00 p.m only</u></i></center></h5>
+  <center>
+<form action="https://m.facebook.com/messages/t/100011013093695" method="post" enctype="text/plain">
+  <br><p><label for="Cake"><b>Choose a Cake: </b></label>
+<select name="Cake" id="Cake" required>
+  <option value="" disabled selected hidden>Please Select</option>
+  <option value="Round Cake">Round Cake</option>
+  <option value="1 Layer Round Cake">1 Layer Round Cake</option>
+  <option value="2 Layer Round Cake">2 Layer Round Cake</option>
+   <option value="3 Layer Round Cake">3 Layer Round Cake</option>
+  <option value="Square Cake">Square Cake</option>
+   <option value="1 Layer Square Cake">1 Layer Square Cake</option>
+   <option value="2 Layer Square Cake">2 Layer Square Cake</option>
+</select></p><br>
+  
+<p><label for="Flavor"><b>Choose a Flavor: </b></label>
+<select name="Flavor" id="Flavor" required>
+  <option value="" disabled selected hidden>Please Select</option>
+  <option value="Chocolate">Chocolate</option>
+  <option value="Strawberry">Strawberry</option>
+   <option value="Ube">Ube</option>
+   <option value="Vanilla">Vanilla</option>
+  <option value="Mocha">Mocha</option>
+  <option value="Pandan">Pandan</option>
+   <option value="Chiffon">Chiffon</option>
+</select></p><br>
+  
+<p><label for="Design for cake"><b>Design for Cake: </b></label>
+  <select name="Design" id="Design for cake" required>
+    <option value="" disabled selected hidden>Please Select</option>
+  <option value="Chocolate & pink">Chocolate & pink</option>
+  <option value="Strawberry">Strawberry</option>
+  <option value="Mocha">Mocha</option>
+  <option value="Pandan">Pandan</option>
+  </select></p>
+  <p>Or</p>
+  <p><label for="Picture"><b><i>Choose a design from gallery:</i></b></label>
+    <input type="file" accept="image/*" onchange="loadFile(event)" id="Picture">
+      <p><img name="Picture" id="output" width="100px" height="150px"/></p>
+      <script>
+          var loadFile = function(event) {
+              var image = document.getElementById('output');
+              image.src=URL.createObjectURL(event.target.files[0]);
+          };
+      </script>
+   <br>
+
+<p> <label for="Date"><b>Date:</b><i>kanus a kuhaon</i></label></p>
+  <span>
+     <select name="month" id="Date" required>
+       <option value="" disabled selected hidden>Month</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+     </select> 
+</span>
+<span>
+     <select name="day" id="Date" required>
+       <option value="" disabled selected hidden>Day</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+     </select>
+</span>
+<span>
+     <select name="year" id="Date" required>
+       <option value="" disabled selected hidden>Year</option>
+          <option value="2030">2030</option>
+          <option value="2029">2029</option>
+          <option value="2028">2028</option>
+          <option value="2027">2027</option>
+          <option value="2026">2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+     </select>
+</span>
+
+ <p><br><label for="Pick up time"><b>Pick up time:</b><i> oras sa pagkuha </i></label><br>
+   <select name="Hour" id="Pick up time" required>
+       <option value="" disabled selected hidden>Select available Time to pick up</option>
+        <option value="9:00 A.M">9:00 A.M</option>
+        <option value="10:00 A.M">10:00 A.M</option>
+        <option value="11:00 A.M">11:00 A.M</option>
+        <option value="12:00 P.M">12:00 P.M</option>
+        <option value="1:00 P.M">1:00 P.M</option>
+        <option value="2:00 P.M">2:00 P.M</option>
+        <option value="3:00 P.P">3:00 P.M</option>
+        <option value="4:00 P.M">4:00 P.M</option>
+        <option value="5:00 P.M">5:00 P.M</option>
+        <option value="6:00 P.M">6:00 P.M</option>
+        <option value="7:00 P.M">7:00 P.M</option>
+        <option value="8:00 P.M">8:00 P.M</option>
+     </select> 
+   <br><br>
+  <label for="Message"><b>MESSAGE:</b> <i>ngalan nga ibutang sa cake</i></label><br>
+   <textarea rows="3" name="Message" id="Message" placeholder="E.g. Happy Birthday Mama From: Your Children" class='scroll'></textarea><br><br>
+   <label for="Phone number"><b>Enter your phone number:</b></label>
+  <input type="tel" id="Phone number" name="Phone number" placeholder="09*********" pattern="[0-9]{11}" required><br><br>
+ <br></center>
+  <center><input type="submit" value="Submit"></center>
+</form>
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+</body>
+</html>
