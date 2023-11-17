@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Betting App - Concept</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@300;400;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  /* needed for demo only */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* needed for demo only */
+  height: auto;
+  background-color: #003152;
+  font: 16px "Inter", sans-serif;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.app {
+  /* needed for demo only */
+  margin: auto;
+  width: 375px;
+  height: 650px;
+  overflow: hidden;
+  /* needed for demo only */
+  display: grid;
+  position: relative;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  grid-template-areas: "appbar" "content" "tabbar";
+  background-color: #003152;
+}
+
+.appbar {
+  display: grid;
+  grid-area: appbar;
+  grid-template-areas: "controls-left title controls-right";
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+}
+.appbar__controls-left {
+  grid-area: controls-left;
+}
+.appbar__title {
+  grid-area: title;
+}
+.appbar__title-text {
+  font-size: 1em;
+}
+.appbar__controls-right {
+  grid-area: controls-right;
+}
+.appbar--hero {
+  padding: 10px 10px;
+  background-color: #003152;
+  grid-template-areas: "title title controls-right";
+}
+.appbar--hero .appbar__title-text {
+  font-size: 1.2em;
+}
+
+.content {
+  grid-area: content;
+  height: 100%;
+  padding: 5px 24px;
+  background-color: lavender;
+}
+
+.scrollview {
+  overflow: auto;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.scrollview::-webkit-scrollbar {
+  width: 0px;
+}
+
+.backdrop {
+  border-radius: 24px;
+}
+
+.list__item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0 24px;
+  border-bottom: 1px solid #c3cdd8;
+}
+.list__item:last-child {
+  border: none;
+}
+.list__item-footer {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+.list__title {
+  margin-bottom: 16px;
+}
+
+.button {
+  border: none;
+  display: flex;
+  gap: 8px;
+  background-color: #008ECC;
+  padding: 10px 15px;
+  font-weight: bold;
+  font-size: 0.8em;
+  border-radius: 24px;
+  color: yellow;
+  transition: ease-in 0.12s;
+}
+.button:active {
+  background-color: yellow;
+  color: darkblue;
+}
+.button--secondary {
+  color: #0f3561;
+  background-color: #c3cdd8;
+}
+.button--secondary:active {
+  background-color: #abb8c8;
+}
+.button--tertiary {
+  color: #0f3561;
+  background-color: #e2e7ec;
+}
+.button--tertiary:active {
+  background-color: #cfd7df;
+}
+
+.navigation {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  padding: 10px 10px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  background-color: #003152;
+  font-size: 13px;
+}
+.navigation__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 40px;
+  border-radius: 24px;
+}
+.navigation--item-current {
+  background-color: #008ECC;
+  font-weight: bold;
+  color: #fff;
+}
+a{
+  text-decoration: none;
+}
+.cont{
+  text-align: center;
+  color: #000;
+  border: none;
+  font-weight: bold;
+}
+</style>
+<body>
+<!-- partial:index.partial.html -->
+<main class="app">
+  <header class="appbar appbar--hero">
+    <div class="appbar__title">
+      <h5 id="day"class="appbar__title-text">
+      </h5>
+      <p>
+        John Kenneth OAna Balutan Jr.
+      </p>
+    </div>
+    <div class="appbar__controls-right">
+      <div class="button">
+        <img src="idnumber.jpg" style="border-radius:5px"width="25px" height="20px" />:
+      2021-0459
+      </div>
+    </div>
+  </header>
+  <section class="content backdrop scrollview">
+<div class="cont">
+      <p>
+         <img src="idnumber.jpg" width="20px" height="20px" />
+        CliniConnect: NORSU-G Health Hub</p>
+  <hr>
+    </div>
+  </section>
+  <nav class="navigation">
+    <a href="k.html"class="navigation__item navigation--item-current">
+      <svg class="navigation__item-icon" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.5 9.28516C20.5 9.10938 20.4297 8.96875 20.2891 8.82812L10.7266 0.390625C10.6211 0.320312 10.4805 0.285156 10.375 0.285156C10.2344 0.285156 10.0938 0.320312 9.98828 0.390625L0.425781 8.82812C0.285156 8.96875 0.25 9.10938 0.25 9.28516C0.25 9.56641 0.496094 9.8125 0.8125 9.8125C0.917969 9.8125 1.05859 9.77734 1.16406 9.67188L2.5 8.51172V16.5625C2.5 17.5117 3.23828 18.25 4.1875 18.25H7C7.91406 18.25 8.6875 17.5117 8.6875 16.5625V12.625H12.0625V16.5625C12.0625 17.5117 12.8008 18.25 13.75 18.25H16.5625C17.4766 18.25 18.25 17.5117 18.25 16.5625V8.51172L19.5508 9.67188C19.6562 9.77734 19.7969 9.8125 19.9375 9.8125C20.2188 9.8125 20.5 9.56641 20.5 9.28516ZM17.125 7.5625V16.5625C17.125 16.8789 16.8438 17.125 16.5625 17.125H13.75C13.4336 17.125 13.1875 16.8789 13.1875 16.5625V12.625C13.1875 12.0273 12.6602 11.5 12.0625 11.5H8.6875C8.05469 11.5 7.5625 12.0273 7.5625 12.625V16.5625C7.5625 16.8789 7.28125 17.125 7 17.125H4.1875C3.87109 17.125 3.625 16.8789 3.625 16.5625V7.5625C3.625 7.5625 3.58984 7.5625 3.58984 7.52734L10.375 1.58594L17.125 7.52734C17.125 7.5625 17.125 7.5625 17.125 7.5625Z" fill="white" />
+      </svg>
+      <p class="navigation__item-label">
+        Home
+      </p>
+    </a>
+    <a href="k.html" class="navigation__item navigation--item-current">
+    <i style="font-size:24px" class="fa">&#xf003;</i>
+      <p class="navigation__item-label">
+        Message
+      </p>
+    </a>
+  </nav>
+</main>
+  <script>
+const time = new Date().getHours();
+let greeting;
+if (time < 10) {
+  greeting = "Good Morning!";
+} else if (time < 20) {
+  greeting = "Good Day!";
+} else {
+  greeting = "Good Evening!";
+}
+document.getElementById("day").innerHTML = greeting;
+</script>
+  
+</body>
+</html>
