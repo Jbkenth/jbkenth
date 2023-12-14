@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Login</title>
+  <script src="function.js"></script>
+</head>
+<style>
+body, button, input{
+  font-size: 20px;
+  background: lightblue;
+  font-family: serif;
+}
+.form{
+ margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  text-align: center;
+  background: #fff;
+  padding: 50px 10px;
+  box-shadow: 0 0 10px grey;
+}
+label{
+  font-weight: bold;
+}
+input{
+  background: none;
+  width:150px;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+button{
+  background: darkgreen;
+  color: #fff;
+  padding: 10px 50px;
+  border: 1px solid #000;
+}
+button:hover{
+  background: lightgreen;
+  color: darkgreen;
+}
+
+</style>
+<body>
+  <div class="form">
+    <p id="error"></p>
+    <h1>LOGIN</h1>
+    <label>Username: </label>
+    <input type="text" id="username"/>
+    <br><br>
+    <label>Password: </label>
+    <input type="password" id="password" />
+    <br><br><br>
+    <button onclick="login()">Login</button>
+  </div>
+</body>
+</html>
