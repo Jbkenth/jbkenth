@@ -1,60 +1,164 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>Login</title>
-  <script src="function.js"></script>
-</head>
-<style>
-body, button, input{
-  font-size: 20px;
-  background: lightblue;
-  font-family: serif;
-}
-.form{
- margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 300px;
-  text-align: center;
-  background: #fff;
-  padding: 50px 10px;
-  box-shadow: 0 0 10px grey;
-}
-label{
-  font-weight: bold;
-}
-input{
-  background: none;
-  width:150px;
-  border: none;
-  border-bottom: 1px solid #000;
-}
-button{
-  background: darkgreen;
-  color: #fff;
-  padding: 10px 50px;
-  border: 1px solid #000;
-}
-button:hover{
-  background: lightgreen;
-  color: darkgreen;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Track Current Location</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-</style>
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #location {
+            font-size: 16px;
+            color: #555;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        #map {
+            height: 300px;
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+    <script>
+        let map;
+        let marker;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 15,
+            });
+        }
+
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const location = { lat: latitude, lng: longitude };
+
+            getStreetName(latitude, longitude);
+
+            // Update the map and marker position
+            map.setCenter(location);
+            if (marker) {
+                marker.setPosition(location);
+            } else {
+                marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                });
+            }
+        }
+
+        function getStreetName(latitude, longitude) {
+            const apiKey = 'AIzaSyDvRcqMlidQW4UzTdYSR2MfpnvqcKOtcIA';
+            const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'OK' && data.results.length > 0) {
+                        const address = data.results[0].formatted_address;
+                        document.getElementById("location").innerText = `Your Location: ${address}`;
+                    } else {
+                        document.getElementById("location").innerText = "Unable to retrieve street name.";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching the location:', error);
+                    document.getElementById("location").innerText = "Error fetching the location.";
+                });
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvRcqMlidQW4UzTdYSR2MfpnvqcKOtcIA&callback=initMap">
+    </script>
+</head>
 <body>
-  <div class="form">
-    <p id="error"></p>
-    <h1>LOGIN</h1>
-    <label>Username: </label>
-    <input type="text" id="username"/>
-    <br><br>
-    <label>Password: </label>
-    <input type="password" id="password" />
-    <br><br><br>
-    <button onclick="login()">Login</button>
-  </div>
+    <div class="container">
+        <h2>Track Your Current Location</h2>
+        <button onclick="getCurrentLocation()"><i class="fas fa-map-marker-alt"></i> Track My Location</button>
+        <p id="location"><b>Location will appear here.</b></p>
+        <div id="map"></div>
+        <div class="footer">
+            <p>Online tracking location system</p>
+        </div>
+    </div>
 </body>
 </html>
