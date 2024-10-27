@@ -59,23 +59,35 @@
         <div class="message" id="statusMessage"></div>
     </div>
 
-    <script>
-        const beamsClient = new PusherPushNotifications.Client({
-            instanceId: 'fdf549bd-aca9-402b-8e72-b949965d871e',
-        });
+     <script>
+        // Register the service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                    
+                    // Initialize the Pusher Beams SDK after registration
+                    const beamsClient = new PusherPushNotifications.Client({
+                        instanceId: 'fdf549bd-aca9-402b-8e72-b949965d871e',
+                    });
 
-        document.getElementById('subscribeButton').addEventListener('click', () => {
-            beamsClient.start()
-                .then(() => beamsClient.addDeviceInterest('hello'))
-                .then(() => {
-                    console.log('Successfully registered and subscribed!');
-                    document.getElementById('statusMessage').textContent = 'Successfully subscribed!';
+                    document.getElementById('subscribeButton').addEventListener('click', () => {
+                        beamsClient.start()
+                            .then(() => beamsClient.addDeviceInterest('hello'))
+                            .then(() => {
+                                console.log('Successfully registered and subscribed!');
+                                document.getElementById('statusMessage').textContent = 'Successfully subscribed!';
+                            })
+                            .catch(error => {
+                                console.error(error);
+                                document.getElementById('statusMessage').textContent = 'Subscription failed.';
+                            });
+                    });
                 })
-                .catch(error => {
-                    console.error(error);
-                    document.getElementById('statusMessage').textContent = 'Subscription failed.';
-                });
-        });
+                .catch(error => console.error('Service Worker registration failed:', error));
+        } else {
+            console.warn('Service workers are not supported in this browser.');
+        }
     </script>
 </body>
 </html>
