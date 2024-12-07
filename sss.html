@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sip, Snack, & Style (SSS)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #1e88e5, #1565c0);
+      overflow-x: hidden;
+    }
+
+    /* Navigation bar */
+    nav {
+      background: #0d47a1;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    nav .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav .menu {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav .menu a {
+      color: #bbdefb;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.2s;
+    }
+
+    nav .menu a:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    /* Hamburger icon */
+    nav .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    nav .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+    }
+
+    /* Hidden menu for mobile */
+    nav .menu-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: #0d47a1;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+    }
+
+    nav .menu-mobile a {
+      color: #bbdefb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav .menu-mobile a:hover {
+      color: #fff;
+    }
+
+    /* Main content */
+    .container {
+      margin: 20px auto;
+      max-width: 1200px;
+      background-image: url('bg.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #0d47a1;
+      border: 1px solid #0d47a1;
+      background-color: #fff;
+    }
+
+    .content {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #000;
+      opacity: 0.9;
+      border: 1px solid #bbdefb;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .content h2 {
+      color: #1565c0;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      color: #fff;
+    }
+    .content ul li{
+        color: #999;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav .menu {
+        display: none;
+      }
+
+      nav .hamburger {
+        display: flex;
+      }
+    }
+    .modal-body {
+    background-image: url('bg1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    animation: fadeBackground 16s infinite;
+
+}
+@keyframes fadeBackground {
+    0%, 25% {
+        background-image: url('bg2.jpg');
+    }
+    25%, 50% {
+        background-image: url('bg3.jpg');
+    }
+    50%, 75% {
+        background-image: url('bg4.jpg');
+    }
+    75%, 100% {
+        background-image: url('bg5.jpg');
+    }
+}
+
+.modal-body ul li{
+    color: #000;
+}
+/* Add an overlay for the blur effect */
+.modal-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px); /* Adjust blur intensity */
+    background: rgba(255, 255, 255, 0.2); /* Optional semi-transparent overlay */
+    z-index: 1;
+}
+
+/* Ensure content inside the modal stays on top */
+.modal-body > * {
+    position: relative;
+    z-index: 2;
+}
+h6{
+    color:#000;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="brand">Sip, Snack, & Style (SSS)</div>
+    <div class="menu">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#missionModal">Mission</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#visionModal">Vision</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#objectivesModal">Objectives</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#highlightsModal">Highlights</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#methodologyModal">Methodology</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#marketProfileModal">Market Strategies</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="menu-mobile">
+        <a href="#" onclick="toggleMenu()" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a>
+        <a href="#" onclick="toggleMenu()" data-bs-toggle="modal" data-bs-target="#missionModal">Mission</a>
+        <a href="#" onclick="toggleMenu()" data-bs-toggle="modal" data-bs-target="#visionModal">Vision</a>
+        <a href="#" onclick="toggleMenu()" data-bs-toggle="modal" data-bs-target="#objectivesModal">Objectives</a>
+        <a href="#" onclick="toggleMenu()" data-bs-toggle="modal" data-bs-target="#highlightsModal">Highlights</a>
+        <a href="#" onclick="toggleMenu()" data-bs-toggle="modal" data-bs-target="#methodologyModal">Methodology</a>
+        <a href="#" onclick="toggleMenu()" data-bs-toggle="modal" data-bs-target="#marketProfileModal">Market Strategies</a>
+    </div>
+  </nav>
+
+  <div class="modal fade" id="marketProfileModal" tabindex="-1" aria-labelledby="marketProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Large Modal -->
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="marketProfileModalLabel">Market Profile & Financial Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>The Market Profile</h4>
+                <p>The market profile for Sip, Snack &amp; Style (SSS) includes a diverse range of key audiences, such as teachers, faculty, staff, students, and visitors from outside the campus. These groups represent the core customers who will engage with our products and services during the 62nd Founding Anniversary of SFCG-NOI at the BSIS Booth.</p>
+
+                <h5>Price Ranges:</h5>
+
+                <h6>I. Foods and Beverage</h6>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Products</th>
+                            <th>Unit</th>
+                            <th>Prices</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Tempura</td><td>1 pcs.</td><td>5.00 PHP</td></tr>
+                        <tr><td>Hotdog (Big)</td><td>1 pcs.</td><td>25.00 PHP</td></tr>
+                        <tr><td>Hotdog (Regular)</td><td>1 pcs.</td><td>10.00 PHP</td></tr>
+                        <tr><td>Fries</td><td>1 cup</td><td>25.00 PHP</td></tr>
+                        <tr><td>Cheese Sticks</td><td>3 pcs.</td><td>25.00 PHP</td></tr>
+                        <tr><td>Iced Tea</td><td>1 cup</td><td>10.00 PHP</td></tr>
+                    </tbody>
+                </table>
+
+                <h6>II. Clothes</h6>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Products</th>
+                            <th>Prices</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Tops</td><td>100-200 PHP</td></tr>
+                        <tr><td>Trousers</td><td>250-300 PHP</td></tr>
+                        <tr><td>Shorts and Skorts</td><td>60-200 PHP</td></tr>
+                        <tr><td>Long Skirts</td><td>250-300 PHP</td></tr>
+                        <tr><td>Jeans</td><td>70-100 PHP</td></tr>
+                    </tbody>
+                </table>
+
+                <h5>Financial Studies</h5>
+
+                <h6>Ingredients for the Sauce</h6>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Prices</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Cornstarch (1 pack)</td><td>20.00 PHP</td></tr>
+                        <tr><td>Sugar (1/4 pack)</td><td>20.00 PHP</td></tr>
+                        <tr><td>Sili (2 packs)</td><td>20.00 PHP</td></tr>
+                        <tr><td>Ketchup (1 pouch)</td><td>15.00 PHP</td></tr>
+                        <tr><td>Patis (1 pouch)</td><td>10.00 PHP</td></tr>
+                        <tr><td>Oil (1 flat)</td><td>20.00 PHP</td></tr>
+                    </tbody>
+                </table>
+
+                <h6>Beverage</h6>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Nestea Lemon (6 sachets)</td><td>120.00 PHP</td></tr>
+                        <tr><td>Ice (4 pcs.)</td><td>16.00 PHP</td></tr>
+                    </tbody>
+                </table>
+
+                <h6>Products</h6>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Products</th>
+                            <th>Unit</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Hotdog Regular</td><td>1 pack</td><td>145.00 PHP</td></tr>
+                        <tr><td>Big Shot Hotdog</td><td>1 pack</td><td>185.00 PHP</td></tr>
+                        <tr><td>Fries</td><td>1 kg</td><td>135.00 PHP</td></tr>
+                        <tr><td>Cheese Sticks</td><td>1 pack</td><td>102.00 PHP</td></tr>
+                        <tr><td>Tempura</td><td>1 pack</td><td>145.00 PHP</td></tr>
+                    </tbody>
+                </table>
+
+                <h5>Total Amount of Capital</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Sauce Ingredients</td><td>105.00 PHP</td></tr>
+                        <tr><td>Beverage</td><td>136.00 PHP</td></tr>
+                        <tr><td>Products</td><td>712.00 PHP</td></tr>
+                        <tr><td>Others</td><td>370.00 PHP</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>Total Amount of Capital: 1,323.00 PHP</strong></p>
+
+                <h5>Statement Income Revenues</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Product Sales</td><td>3,650.00 PHP</td></tr>
+                        <tr><td>Net Profit</td><td>2,327.00 PHP</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="methodologyModal" tabindex="-1" aria-labelledby="methodologyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Large Modal -->
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="methodologyModalLabel">Our Methodology</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p style="color:#000">The Sip, Snack &amp; Style (SSS) will be set up at the Bachelor of Science in
+                    Information Systems Booth Area, ensuring easy access for students, staff, or
+                    event-goers. The booth will feature a well-organized layout that separates
+                    the food and clothing sections while maintaining a cohesive theme. The
+                    location is at the front of the School Director’s Office. All food will be
+                    prepared fresh on-site, and the clothing section will feature a carefully
+                    curated selection of trendy items that are easy for customers to browse.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="highlightsModal" tabindex="-1" aria-labelledby="highlightsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Large Modal -->
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="highlightsModalLabel">Highlights</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li><b>Dual Offering.</b> A perfect mix of street food and fashionable clothing,
+                        catering to a wide range of attendees.</li>
+                    <li><b>Affordability.</b> We offer budget-friendly options without compromising
+                        on quality, both for food and fashion.</li>
+                    <li><b>Engagement.</b> The interactive booth setup allows customers to enjoy a
+                        casual, welcoming atmosphere while shopping and snacking.</li>
+                    <li><b>Convenience.</b> Everything is available in one booth, offering attendees
+                        the convenience of grabbing a bite to eat while browsing for trendy
+                        outfits.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <div class="modal fade" id="objectivesModal" tabindex="-1" aria-labelledby="objectivesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Large Modal -->
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white">
+                <h5 class="modal-title" id="objectivesModalLabel">Our Objectives</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p style="color:#000;">
+                                    The main objectives of Sip, Snack &amp; Style (SSS) for the 62nd Founding
+                Anniversary of SFCG-NOI are to provide a unique dining and shopping
+                experience for event attendees. We aim to deliver high-quality, freshly made
+                street food, such as tempura, fries, hotdogs, and cheese sticks, while
+                offering a selection of trendy clothing at the booth. Our goals include
+                boosting brand awareness, increasing sales during the event, and engaging
+                with a diverse crowd of potential new customers. Additionally, we seek to
+                contribute to the overall success of the Bachelor of Science in Information
+                Systems booth by providing a lively and enjoyable space.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="visionModal" tabindex="-1" aria-labelledby="visionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Large Modal -->
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="visionModalLabel">Our Vision</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p style="color:#000">Our vision is to become the go-to spot for those who love good food and
+                    fresh fashion, creating a community where people can relax, enjoy, and
+                    leave feeling satisfied and stylish.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="missionModal" tabindex="-1" aria-labelledby="missionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Large Modal -->
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="missionModalLabel">Our Mission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p style="color:#000">At Sip, Snack &amp; Style, our mission is to provide a fun and welcoming space
+                    where people can enjoy delicious street food while exploring trendy and
+                    affordable fashion. We’re here to serve up great flavors and great style, all
+                    in one place.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="aboutModalLabel">About Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p style="color: #000">Sip, Snack &amp; Style is all about bringing together two things we
+                    love—delicious street food and trendy clothing. We came up with the name
+                    because it perfectly captures what we offer. &quot;Sip&quot; represents our refreshing
+                    iced tea drinks, &quot;Snack&quot; is all about the tasty street food like tempura, fries,
+                    hotdogs, and cheese sticks, and &quot;Style&quot; highlights our passion for fashion,
+                    offering a mix of clothing for our customers. We wanted a name that’s
+                    simple, catchy, and reflects the fun, laid-back vibe of enjoying great food
+                    while staying stylish.
+                    We wanted to create a place where people can enjoy the best of both
+                    worlds—grabbing a quick snack while browsing through some stylish
+                    clothing. The name &quot;Sip, Snack &amp; Style&quot; naturally came to us because it
+                    represents exactly what our customers can expect. It’s more than just a
+                    shop; it’s a spot where you can relax with your favorite street food, sip on a
+                    refreshing drink, and check out trendy clothing options all in one go. We
+                    believe that good food and great style can bring people together, and that’s
+                    the experience we aim to offer.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1>Sip, Snack, & Style (SSS) Details</h1>
+    <div class="content">
+      <h2>Significance of the Study</h2>
+      <ul>
+        <li><b>Significance of the Business</b><br>Sip, Snack &amp; Style (SSS) plays a significant role in enhancing the event
+            experience by combining two popular interests—food and fashion. By
+            offering delicious snacks and trendy clothing at affordable prices, we cater to
+            the practical needs and preferences of attendees. Our presence at the 62nd
+            Founding Anniversary not only serves as a unique attraction but also
+            supports the student community by aligning with the creative and
+            entrepreneurial spirit of the event. The business also helps promote local
+            street food culture and encourages conscious fashion choices.</li>
+      </ul>
+    </div>
+    <div class="content">
+      <h2>Scope & Limitation</h2>
+      <ul>
+        <li><b>Scope of the Study</b><br>Sip, Snack &amp; Style focuses on providing a unique in-store experience that
+            blends street food with fashionable clothing. Our offerings include a variety
+            of popular snacks like tempura, fries, hotdogs, cheese sticks, and refreshing
+            iced tea, alongside a curated selection of stylish and affordable clothing. We
+            cater to customers seeking convenience, quality, and a welcoming
+            atmosphere. Our business operates solely through our physical store, where
+            customers can enjoy both the food and clothing firsthand.</li>
+            <li><b>Limitation of the Study</b><br>At Sip, Snack &amp; Style, we’re focused on providing a great in-store
+                experience, which means we currently don’t offer online sales or delivery
+                options. Sometimes, certain items might be out of stock due to supplier
+                issues or high demand, but we always do our best to restock quickly. As a
+                smaller business, we&#39;re also limited by space, so while we’d love to expand
+                in the future, right now we’re focused on making our single location the best
+                it can be.</li>
+      </ul>
+    </div>
+    <div class="content">
+      <h2>System Used</h2>
+      <ul>
+        <li><b>Inventory Management System:</b> Our Inventory Management System
+            helps us keep track of both our food ingredients and clothing stock in real-
+            time. This system ensures that we always have the right supplies on hand,
+            whether it&#39;s fresh ingredients for snacks or the latest clothing styles, so we
+            can consistently meet customer demand.</li>
+            <li><b>Food Safety and Compliance System:</b> We use a Food Safety and
+                Compliance System to ensure that all our food items meet health and safety
+                standards. This system allows us to monitor food preparation, maintain
+                hygiene protocols, and comply with local regulations, guaranteeing that
+                everything we serve is safe and fresh.</li>
+                <li><b>Financial and Accounting System:</b> Our Financial and Accounting
+                    System handles everything from sales tracking to expense management,
+                    helping us keep the business running smoothly. It provides insights into our
+                    cash flow, manages payroll, and generates financial reports to ensure we
+                    stay on top of our finances.</li>
+                    <li><b>Order Management System:</b> Our Order Management System allows us
+                        to handle food and clothing orders seamlessly. It helps us track orders from
+                        placement to completion, ensuring that every customer receives their snacks
+                        and fashion items promptly and accurately, enhancing the overall customer
+                        experience.</li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function toggleMenu() {
+      const menuMobile = document.querySelector('.menu-mobile');
+      menuMobile.style.display = menuMobile.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+</body>
+</html>
