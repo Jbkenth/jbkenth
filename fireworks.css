@@ -1,0 +1,9 @@
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #001a33, #000011);
+        }
+
+        canvas {
+            display: block;
+        }
