@@ -16,6 +16,8 @@
         }
         .red-bg { background-color: red !important; }
         .green-bg { background-color: green !important; }
+        .paid { color: green; font-weight: bold; }
+        .remaining { color: red; font-weight: bold; }
     </style>
 </head>
 <body class="bg-light">
@@ -33,14 +35,15 @@
                         <tr>
                             <th>Name</th>
                             <th>Amount (₱)</th>
+                            <th>Remarks</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr><td>Mary Faith</td><td>₱1600</td></tr>
-                        <tr><td>Nelvie</td><td>₱1000</td></tr>
-                        <tr><td>Jessa</td><td>₱0</td></tr>
-                        <tr><td>Denzel</td><td>₱0</td></tr>
-                        <tr><td>Sven</td><td>₱1000</td></tr>
+                    <tbody id="dataTable">
+                        <tr><td>Mary Faith</td><td>₱1600</td><td></td></tr>
+                        <tr><td>Nelvie</td><td>₱1000</td><td></td></tr>
+                        <tr><td>Jessa</td><td>₱1600</td><td></td></tr>
+                        <tr><td>Denzel</td><td>₱0</td><td></td></tr>
+                        <tr><td>Sven</td><td>₱1000</td><td></td></tr>
                     </tbody>
                     <tfoot>
                         <tr>
@@ -60,9 +63,25 @@
     <script>
         $(document).ready(function () {
             let debitAmount = 8000;
-            let total = 1600 + 1000 + 1000 + 0 + 0;
-            let remaining = debitAmount - total;
+            let requiredAmount = 1600;
+            let total = 0;
 
+            $("#dataTable tr").each(function () {
+                let amountText = $(this).find("td:nth-child(2)").text().replace('₱', '').trim();
+                let amount = parseInt(amountText) || 0;
+                total += amount;
+
+                let remarksCell = $(this).find("td:nth-child(3)");
+                let remainingBalance = requiredAmount - amount;
+                
+                if (amount === requiredAmount) {
+                    remarksCell.html('<span class="paid">Paid <i class="bi bi-check-circle"></i></span>');
+                } else {
+                    remarksCell.html(`<span class="remaining">₱${remainingBalance} Remaining <i class="bi bi-exclamation-triangle"></i></span>`);
+                }
+            });
+
+            let remaining = debitAmount - total;
             $("#totalValue").text(total);
             $("#remainingValue").text(remaining);
 
@@ -78,4 +97,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"></script>
 </body>
-</html>
+                        </html>
